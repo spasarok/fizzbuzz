@@ -2,7 +2,7 @@
 The FizzBuzz game is written using node.js with the Babel ES6 transpiler. This package includes source code, distribution code, and unit tests.
 
 ## Building the App
-You need to build the app before you can play it. In your Bash console run `npm install` to install the app depenendcies. Then run `npm run build` to build the app.
+You need to build the app before you can play it. In your Bash console run `npm install` to install the app dependencies. Then run `npm run build` to build the app.
 
 ## Playing the Game
 You can play the FizzBuzz game by running `npm run play` from your Linux console. Exit the game with `ctrl + c`.
@@ -24,4 +24,3 @@ This app could be improved with a few additional features:
 * Type checking to ensure the inputs are numbers (not implemented)
 * Support for decimal input (not implemented)
 * Support for substitutions in any order (currently substitutions must be submitted entered ascending order);
-
