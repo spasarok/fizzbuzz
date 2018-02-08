@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/spasarok/fizzbuzz.svg?branch=master)](https://travis-ci.org/spasarok/fizzbuzz)
 
-# FizzBuzz
+# FizzBuzz [![Build Status](https://travis-ci.org/spasarok/fizzbuzz.svg?branch=master)](https://travis-ci.org/spasarok/fizzbuzz)
+ [![Coverage Status](https://coveralls.io/repos/github/spasarok/fizzbuzz/badge.svg?branch=master)](https://coveralls.io/github/spasarok/fizzbuzz?branch=master)
 The FizzBuzz game is written using node.js with the Babel ES6 transpiler. This package includes source code, distribution code, and unit tests.
 
 ## Building the App
