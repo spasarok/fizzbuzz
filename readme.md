@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/spasarok/fizzbuzz.svg?branch=master)](https://travis-ci.org/spasarok/fizzbuzz)
+
 # FizzBuzz
 The FizzBuzz game is written using node.js with the Babel ES6 transpiler. This package includes source code, distribution code, and unit tests.
 
