@@ -1,3 +1,7 @@
-node_modules/
+.nyc_output
+coverage/*
+coverage.lcov
+coveralls.yml
 lib/
-package-lock.json
+node_modules/
+secrets.sh
