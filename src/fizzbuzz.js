@@ -13,8 +13,8 @@ const FizzBuzz = {};
 
 // Default multiple-output pairs
 FizzBuzz.defaults = [
-	[3, 'Fizz'], 
-	[5, 'Buzz'], 
+	[3, 'Fizz'],
+	[5, 'Buzz'],
 	[7, 'Pop']
 ];
 
@@ -43,8 +43,6 @@ FizzBuzz.prompt = function(){
  *   stdIn: open standard input object
  */
 FizzBuzz.promptSubs = function(stdIn){
-	// Substitutions seemed more like replacements and the directions were a bit confusing,
-	// so I've listed my assumptions in the prompt
 	console.log('Enter any custom substitutions!');
 	console.log('* Substitutions must be entered on a single line');
 	console.log('* Substitutions must be entered in ascending order');
@@ -54,10 +52,11 @@ FizzBuzz.promptSubs = function(stdIn){
 
 	// Listen for substitutions then prompt for number
 	const listener = function(d){
-		stdIn.removeListener('data',listener); // Only allow subsitutions at beginning
-		FizzBuzz.promptNumber(stdIn, FizzBuzz.parseSubs(d.toString().trim()));
+		stdIn.removeListener('data', listener); // Only allow subsitutions at beginning
+		//FizzBuzz.promptNumber(stdIn, FizzBuzz.parseSubs(d.toString().trim()));
 	}
-	stdIn.addListener('data', listener);
+	//stdIn.addListener('data', listener);
+
 }
 
 /*
@@ -94,7 +93,7 @@ FizzBuzz.calculate = function(num, subs){
 
 	let reply = ""; // For building return value
 	num = parseFloat(num); // Parse input as number
-	
+
 	// Special case to prevent 0 from acting as multiple
 	if(num === 0){
 		return "0";
@@ -124,12 +123,12 @@ FizzBuzz.calculate = function(num, subs){
 	return reply += '';
 }
 
-/* 
+/*
  * Purpose
  *   Parse a string into a list of pairs to provide as substitutions for FizzBuzz.calculate()
  * Parameters
  *   subs: a string of substitutions in the format of "#-word #-word #-word"
- *     ex. "3-hello 4-world" represents the substitution "hello" for multiples of 3, "world" for multiples of 4, 
+ *     ex. "3-hello 4-world" represents the substitution "hello" for multiples of 3, "world" for multiples of 4,
  *     and "hello world" for multiples of 3 and 4
  * Produces
  *   parsedSubs: a list of pairs to use a substitutions for FizzBuzz.calculate()

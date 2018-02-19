@@ -1,7 +1,18 @@
 import { assert } from 'chai';
+import sinon from 'sinon';
 import FizzBuzz from '../src/fizzbuzz.js';
 
+let sandbox = sinon.sandbox.create();
+
 describe('FizzBuzz', function() {
+
+	beforeEach(function(){
+
+	});
+
+	afterEach(function(){
+		sandbox.restore();
+	});
 
 	describe('normal numbers', function() {
 		it('should return same number', function() {
@@ -73,7 +84,7 @@ describe('FizzBuzz', function() {
 		});
 	});
 
-	/* Not implemented 
+	/* Not implemented
 	describe('decimal points', function() {
 		it('should count as multiples', function() {
 			assert.equal('hello world', FizzBuzz.calculate('2.5', [['5', 'hello'], ['.5', 'world']]));
@@ -95,4 +106,75 @@ describe('FizzBuzz', function() {
 			assert.equal('Fizz Buzz Pop', FizzBuzz.calculate('105.0000'));
 		});
 	});
+
+	describe('FizzBuzz.play', function() {
+		it('should call FizzBuzz.prompt exactly once', function() {
+			let mock = sinon.mock(FizzBuzz).expects('play').once();
+			FizzBuzz.play();
+			mock.verify();
+			mock.restore();
+		});
+	});
+
+	describe('FizzBuzz.prompt', function() {
+		let promptSubsStub;
+		let processStdinStub;
+
+		beforeEach(function(){
+			promptSubsStub = sandbox.stub(FizzBuzz, 'promptSubs');
+			processStdinStub = sandbox.stub(process, 'openStdin');
+		})
+
+		it('should call process.openStdin exactly once', function() {
+			FizzBuzz.prompt();
+			assert(processStdinStub.calledOnce)
+		});
+
+		it('should call FizBuzz.promptSubs exactly once', function() {
+			FizzBuzz.prompt();
+			assert(promptSubsStub.calledOnce);
+		});
+	});
+
+	/*
+	describe('FizzBuzz.promptSubs', function(){
+		let stdIn = {};
+		stdIn.addListener = function(){return 1}
+		stdIn.removeListener = function(){return 2}
+		let consoleLogStub;
+		let stdInRemoveListenerStub;
+		let stdInAddListenerStub;
+		let FizzBuzzPromptNumberStub;
+		let FizzBuzzParseSubsStub;
+
+		beforeEach(function(){
+			stdInRemoveListenerStub = sandbox.stub(stdIn, 'addListener');
+			stdInAddListenerStub = sandbox.stub(stdIn, 'removeListener');
+			consoleLogStub = sandbox.stub(console, 'log');
+			FizzBuzzPromptNumberStub = sandbox.stub(FizzBuzz, 'promptNumber');
+			FizzBuzzParseSubsStub = sandbox.stub(FizzBuzz, 'parseSubs');
+		});
+
+		it('should call console.log exactly six times', function(){
+			FizzBuzz.promptSubs(stdIn);
+			assert.equal(consoleLogStub.callCount, 6);
+		});
+
+		it('should call stdIn.removeListener exactly once', function(){
+			FizzBuzz.promptSubs(stdIn);
+			assert(stdInRemoveListenerStub.calledOnce);
+		});
+
+		it('should call stdIn.addListener exactly once', function(){
+			FizzBuzz.promptSubs(stdIn);
+			assert(stdInAddListenerStub.calledOnce);
+		});
+
+		it('should call FizzBuzz.promptNumberSub exactly once', function(){
+			FizzBuzz.promptSubs(stdIn);
+			assert(FizzBuzzPromptNumberStub.calledOnce);
+		});
+	});
+	*/
+
 });

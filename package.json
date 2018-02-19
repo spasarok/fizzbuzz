@@ -16,7 +16,9 @@
   },
   "author": "Kim Spasaro",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "sinon": "^4.3.0"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
